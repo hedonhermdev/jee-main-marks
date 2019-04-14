@@ -11,7 +11,7 @@ class Question:
         if self.status == 'Answered' or self.status == 'Marked For Review':
             self.chosen_option_id = self.options[int(self.chosen_option)-1]
 
-with open('tirth.htm') as fp:
+with open('QUESTION_PAPER.htm') as fp:
     responses = BeautifulSoup(fp, 'lxml').find('div', attrs={'class': 'grp-cntnr'})
 
 questions = []
@@ -26,7 +26,7 @@ for question in responses.findAll('table', attrs={'class': 'questionPnlTbl'}):
     questions.append(q)
 
 
-with open('jee.htm') as fp:
+with open('CHALLENGE_ANSWER_KEY.htm') as fp:
     answers = BeautifulSoup(fp, 'lxml').find('table', attrs={'class': 'gridv'})
 
 answer_key = {}
@@ -53,6 +53,8 @@ for q in questions[60: 90]:
         else:
             marks = marks - 1
             incorrect += 1
-print(attempted)
-print(correct, incorrect)
-print(marks)
+
+print("MARKS: %i" % marks)
+print("ATTEMPTED: %i" % attempted)
+print("CORRECT: %i" % correct)
+print("INCORRECT: % i" % incorrect)
